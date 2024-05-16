@@ -1,0 +1,83 @@
+#background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+.homeContent {
+  position: relative;
+  z-index: 1;
+}
+
+.textDiv {
+  text-align: center;
+  margin-top: 20%;
+}
+
+.smallText {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.homeTitle {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.destinationInput {
+  margin-top: 2rem;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input input {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  flex: 1;
+}
+
+.input .icon {
+  margin-left: 0.5rem;
+  color: #333;
+}
+
+.videoContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    background-attachment: scroll;
+    overflow: hidden;
+}
+.videoContainer video {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+    z-index: 1;
+}
+.videoContainer .overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    background: green;
+    opacity: 0.5;
+}

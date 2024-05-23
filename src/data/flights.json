@@ -1,0 +1,20 @@
+[
+    {
+        "flightNumber": "AA123",
+        "departure": "New York",
+        "arrival": "Los Angeles",
+        "departureDate": "2024-05-20",
+        "departureTime": "08:00",
+        "arrivalTime": "11:00",
+        "price": 300
+    },
+    {
+        "flightNumber": "BA456",
+        "departure": "Chicago",
+        "arrival": "London",
+        "departureDate": "2024-05-21",
+        "departureTime": "10:00",
+        "arrivalTime": "22:00",
+        "price": 700
+    }
+]

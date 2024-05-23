@@ -73,6 +73,8 @@ function Header() {
               <li><Link to="/login" className="text-grey-500" onClick={toggle}>Login</Link></li>
               <li><Link to="/register" className="text-grey-500" onClick={toggle}>Register</Link></li>
               <li><Link to="/searchflights" className="text-grey-500" onClick={toggle}>Searchflights</Link></li>
+              <li><Link to="/hotels" className="text-grey-500" onClick={toggle}>Hotels</Link></li>
+              <li><Link to="/Profile" className="text-grey-500" onClick={toggle}>Profile</Link></li>
 
 
             </ul>

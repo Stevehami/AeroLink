@@ -36,35 +36,4 @@
   button[type="submit"]:hover {
     background-color: #0056b3;
   }
-  .flight-list {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.flight-item {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 20px;
-}
-
-.flight-detail {
-    margin-bottom: 8px;
-}
-
-.book-now {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 16px;
-  background-color: #28a745;
-  color: white;
-  text-align: center;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.book-now:hover {
-  background-color: #218838;
-}
+  

@@ -1,34 +1,46 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Searchflights.css'; // Import CSS file for search flights styles
+import flightsData from '../../data/flights.json'; // Adjust the path based on your project structure
 
 const SearchFlights = () => {
+    
     const [departure, setDeparture] = useState('');
     const [arrival, setArrival] = useState('');
     const [departureDate, setDepartureDate] = useState('');
     const [returnDate, setReturnDate] = useState('');
     const [passengers, setPassengers] = useState(1);
     const [travelClass, setTravelClass] = useState('economy');
+    const [flights, setFlights] = useState([]); // State to store filtered flight data
+    const [loading, setLoading] = useState(false); // State to manage loading state
+    const [noFlights, setNoFlights] = useState(false); // State to handle no flights available message
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle the form submission, e.g., making an API call to search for flights
-        console.log({
-            departure,
-            arrival,
-            departureDate,
-            returnDate,
-            passengers,
-            travelClass
-        });
+        if (!departure || !arrival || !departureDate) {
+            alert("Please enter departure city, arrival city, and departure date.");
+            return;
+        }
+        setLoading(true);
+        setNoFlights(false);
+        
+        // Simulate fetching data
+        setTimeout(() => {
+            const filteredFlights = flightsData.filter(flight => 
+                flight.departure.toLowerCase().includes(departure.toLowerCase()) &&
+                flight.arrival.toLowerCase().includes(arrival.toLowerCase()) &&
+                flight.departureDate === departureDate
+            );
+            setFlights(filteredFlights);
+            setNoFlights(filteredFlights.length === 0);
+            setLoading(false);
+        }, 500); // Simulate a network delay with 500ms
+        
     };
 
     return (
-       
         <div className="container mx-auto my-8 p-4">
-         
-           
-
-            <h2 className=" relative text-2xl font-bold mb-4 text-center z-20">Search Flights</h2>
+            <h2 className="relative text-2xl font-bold mb-4 text-center z-20">Search Flights</h2>
             <form className="relative max-w-3xl mx-auto bg-white p-6 rounded shadow-md z-20" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
@@ -65,8 +77,34 @@ const SearchFlights = () => {
                         </select>
                     </div>
                 </div>
-                <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Search Flights</button>
+                <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-700">
+                    {loading ? 'Searching...' : 'Search Flights'}
+                </button>
             </form>
+            {flights.length > 0 && (
+                <div className="mt-8">
+                    <h3 className="text-xl font-bold mb-4">Available Flights</h3>
+                    <ul className="flight-list">
+                        {flights.map((flight, index) => (
+                            <li key={index} className="flight-item">
+                                <div className="flight-detail"><strong>Flight Number:</strong> {flight.flightNumber}</div>
+                                <div className="flight-detail"><strong>Departure:</strong> {flight.departure}</div>
+                                <div className="flight-detail"><strong>Arrival:</strong> {flight.arrival}</div>
+                                <div className="flight-detail"><strong>Departure Time:</strong> {flight.departureTime}</div>
+                                <div className="flight-detail"><strong>Arrival Time:</strong> {flight.arrivalTime}</div>
+                                <div className="flight-detail"><strong>Price:</strong> ${flight.price}</div>
+                                <Link to={`/book/${flight.flightNumber}`} className="book-now">Book Now</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            {noFlights && (
+                <div className="mt-8 text-center">
+                    <h3 className="text-xl font-bold mb-4">No Flights Available</h3>
+        
+                </div>
+            )}
         </div>
     );
 };
